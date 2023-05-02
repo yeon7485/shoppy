@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { BsPencilFill } from "react-icons/bs";
 import { FiShoppingBag } from "react-icons/fi";
