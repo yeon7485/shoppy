@@ -4,7 +4,8 @@ import { BsPencilFill } from 'react-icons/bs';
 import { FiShoppingBag } from 'react-icons/fi';
 import User from './User';
 import Button from './ui/Button';
-import { useAuthContext } from './context/AuthContext';
+import { useAuthContext } from '../context/AuthContext';
+import CartStatus from './CartStatus';
 
 export default function Navbar() {
     const { user, login, logout } = useAuthContext();
@@ -16,7 +17,11 @@ export default function Navbar() {
             </Link>
             <nav className='flex items-center text-xl gap-4 font-semibold'>
                 <Link to='/products'>Products</Link>
-                {user && <Link to='/cart'>Carts</Link>}
+                {user && (
+                    <Link to='/cart'>
+                        <CartStatus />
+                    </Link>
+                )}
                 {user && user.isAdmin && (
                     <Link to='/products/new' className='text-2xl'>
                         <BsPencilFill />
