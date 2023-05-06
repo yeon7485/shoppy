@@ -1,27 +1,27 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import "./index.css";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import NotFound from "./pages/NotFound";
-import Home from "./pages/Home";
-import AllProducts from "./pages/AllProducts";
-import NewProduct from "./pages/NewProduct";
-import ProductDetail from "./pages/ProductDetail";
-import MyCart from "./pages/MyCart";
-import ProtectedRoute from "./pages/ProtectedRoute";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import NotFound from './pages/NotFound';
+import Home from './pages/Home';
+import AllProducts from './pages/AllProducts';
+import NewProduct from './pages/NewProduct';
+import ProductDetail from './pages/ProductDetail';
+import MyCart from './pages/MyCart';
+import ProtectedRoute from './pages/ProtectedRoute';
 
 const router = createBrowserRouter([
     {
-        path: "/",
+        path: '/',
         element: <App />,
         errorElement: <NotFound />,
         children: [
-            { index: true, path: "/", element: <Home /> },
-            { path: "products", element: <AllProducts /> },
+            { index: true, path: '/', element: <Home /> },
+            { path: 'products', element: <AllProducts /> },
             {
-                path: "products/new",
+                path: 'products/new',
                 element: (
                     // requireAdmin={true}를 requireAdmin으로 생략 가능
                     <ProtectedRoute requireAdmin>
@@ -29,9 +29,9 @@ const router = createBrowserRouter([
                     </ProtectedRoute>
                 ),
             },
-            { path: "products/:id", element: <ProductDetail /> },
+            { path: 'products/:id', element: <ProductDetail /> },
             {
-                path: "cart",
+                path: 'cart',
                 element: (
                     <ProtectedRoute>
                         <MyCart />
@@ -42,7 +42,7 @@ const router = createBrowserRouter([
     },
 ]);
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
         <RouterProvider router={router} />

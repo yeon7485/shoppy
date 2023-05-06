@@ -1,13 +1,13 @@
-import { initializeApp } from "firebase/app";
-import { v4 as uuid } from "uuid";
+import { initializeApp } from 'firebase/app';
+import { v4 as uuid } from 'uuid';
 import {
     getAuth,
     signInWithPopup,
     GoogleAuthProvider,
     signOut,
     onAuthStateChanged,
-} from "firebase/auth";
-import { getDatabase, ref, set, get } from "firebase/database";
+} from 'firebase/auth';
+import { getDatabase, ref, set, get } from 'firebase/database';
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -22,7 +22,7 @@ const provider = new GoogleAuthProvider();
 const database = getDatabase(app);
 
 provider.setCustomParameters({
-    prompt: "select_account",
+    prompt: 'select_account',
 });
 
 // 명령형 함수 (로그인해! 로그아웃해!)
@@ -44,7 +44,7 @@ export function onUserStateChange(callback) {
 }
 
 async function adminUser(user) {
-    return get(ref(database, "admins")) //
+    return get(ref(database, 'admins')) //
         .then((snapshot) => {
             if (snapshot.exists()) {
                 const admins = snapshot.val();
@@ -62,12 +62,12 @@ export async function addNewProduct(product, image) {
         id,
         price: parseInt(product.price),
         image,
-        options: product.options.split(","),
+        options: product.options.split(','),
     });
 }
 
 export async function getProducts() {
-    return get(ref(database, "products")) //
+    return get(ref(database, 'products')) //
         .then((snapshot) => {
             if (snapshot.exists()) {
                 return Object.values(snapshot.val());
