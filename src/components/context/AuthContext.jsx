@@ -9,7 +9,6 @@ export function AuthContextProvider({ children }) {
     useEffect(() => {
         // 인자가 동일하므로 참조값만 전달
         onUserStateChange((user) => {
-            console.log(user);
             setUser(user);
         });
     }, []);
