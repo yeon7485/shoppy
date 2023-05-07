@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Button from '../components/ui/Button';
-import { addOrUpdateToCart } from '../api/firebase';
-import { useAuthContext } from '../context/AuthContext';
+import useCart from '../hooks/useCart';
 
 export default function ProductDetail() {
-    const { uid } = useAuthContext();
+    const { addOrUpdateItem } = useCart();
+    const {
+        cartQuery: { data: products },
+    } = useCart();
     const {
         state: {
             product: {
@@ -21,17 +23,33 @@ export default function ProductDetail() {
     } = useLocation();
     const [selected, setSelected] = useState(options && options[0]);
     const [success, setSuccess] = useState();
+
     const handleSelect = (e) => setSelected(e.target.value);
     const handleClick = (e) => {
+        // 같은 제품이 있을 경우 수량 증가
+        const findProduct =
+            products &&
+            products.find(
+                (product) => product.id === id && product.option === selected
+            );
+        const prevQuantity = findProduct && findProduct.quantity;
+
         const product = {
             id,
             image,
             title,
             price,
             option: selected,
-            quantity: 1,
+            quantity: prevQuantity ? prevQuantity + 1 : 1,
         };
-        addOrUpdateToCart(uid, product);
+        addOrUpdateItem.mutate(product, {
+            onSuccess: () => {
+                setSuccess('장바구니에 추가되었습니다.');
+                setTimeout(() => {
+                    setSuccess(null);
+                }, 4000);
+            },
+        });
     };
 
     return (
