@@ -1,5 +1,5 @@
 # Shopping Mall Project  with React  
-![image](https://file.notion.so/f/s/99a081e3-9364-4180-8d96-f29d8c62c5fd/Untitled.png?id=87be0848-3f17-4bdf-9d94-88cea2a9b381&table=block&spaceId=8620ed13-4042-4c6a-a2f3-9cacde99bf43&expirationTimestamp=1683882839052&signature=pl7_uxHk6ct2sxQJoHKV3L9XeDWutcUwA__RfjiiUxg&downloadName=Untitled.png)
+![image](https://github.com/yeon7485/shoppy/assets/55083958/5a05238a-2370-43bf-86c5-3c4f853c12cf)
 
 <br/>
 
